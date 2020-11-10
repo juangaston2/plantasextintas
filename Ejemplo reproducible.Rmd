@@ -28,3 +28,34 @@ threats <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/ti
 
 El numero de especies en Sudamerica es `r plants %>% filter(continent == "South America") %>%  nrow ()`
 
+
+
+## Tiempo de dormir
+
+```{r, echo = FALSE}
+data ("msleep")
+table <- msleep %>% 
+  group_by(vore) %>% 
+  summarise_at("sleep_total", .funs = list(Media = mean, Desvio = sd)) %>% 
+  filter(!is.na(vore)) %>% 
+  arrange(desc(Media))
+
+kable(table, digit = 2)  %>% 
+  kable_styling(bootstrap_options = c("striped","hover","condensed"))
+```
+
+
+
+## Tablas largas
+
+```{r}
+table1 <- diamonds %>% 
+  group_by(color) %>% 
+  summarise(Precio_Medio = mean(price))
+
+kable(table1) %>% 
+  kable_styling(bootstrap_options = c("striped","hover","condensed")) %>% 
+  scroll_box(width = "400px", height = "200px")
+  
+```
+
