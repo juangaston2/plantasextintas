@@ -1,0 +1,19 @@
+---
+title: "Ejercicios1"
+author: "Juan Gaston"
+date: "10/11/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(kableExtra)
+```
+
+
+## Ejercicios numero 1
+
+Usando la base de datos iris, crea un inline code que diga cuál es la media del largo del pétalo de la especie Iris virginica
+
+La media del largo del pétalo de la especie Iris virginica es `r iris %>% filter(Species=="virginica") %>% summarise (media = mean(Petal.Length))`.
